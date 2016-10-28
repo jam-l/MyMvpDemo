@@ -27,10 +27,18 @@ import com.jam.mymvpdemo.util.schedulers.SchedulerProvider;
  */
 public class Injection {
 
+    /**
+     * 提供主界面接口仓库
+     * @return 主界面接口仓库
+     */
     public static MainRepository provideTasksRepository() {
         return MainRepository.getInstance(MainRemoteDataSource.getInstance());
     }
 
+    /**
+     * 提供RxJava调度器
+     * @return RxJava调度器
+     */
     public static BaseSchedulerProvider provideSchedulerProvider() {
         return SchedulerProvider.getInstance();
     }
