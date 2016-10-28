@@ -18,26 +18,38 @@ package com.jam.mymvpdemo.util;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.jam.mymvpdemo.interfaces.PageNames;
+import com.jam.mymvpdemo.ui.find.FindActivity;
 import com.jam.mymvpdemo.ui.home.MainActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * This provides methods to help Activities load their UI.
+ * Activities 管理类
  */
 public class ActivityUtils {
+    private static Map<String, Class> actMap;
+
+    static {
+        actMap = new HashMap<>();
+        actMap.put(PageNames.KEY_MAIN_PAGE, MainActivity.class);
+        actMap.put(PageNames.KEY_FIND_PAGE, FindActivity.class);
+    }
 
     /**
-     * The {@code fragment} is added to the container view with id {@code frameId}. The operation is
-     * performed by the {@code fragmentManager}.
+     * 增加一个Fragment到Activity中
      */
-    public static void addFragmentToActivity (@NonNull FragmentManager fragmentManager,
-                                              @NonNull Fragment fragment, int frameId) {
+    public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager,
+                                             @NonNull Fragment fragment, int frameId) {
         checkNotNull(fragmentManager);
         checkNotNull(fragment);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -45,9 +57,32 @@ public class ActivityUtils {
         transaction.commit();
     }
 
-    public static void startMainActivity(Context context) {
-        Intent starter = new Intent(context, MainActivity.class);
-        context.startActivity(starter);
+    /**
+     * 开启一个Activity
+     *
+     * @param context  上下文
+     * @param key_page 页面的key
+     */
+    public static void startActivity(Context context, String key_page) {
+        startActivity(context, key_page, null);
+    }
+
+    /**
+     * 开启一个含有参数的Activity
+     *
+     * @param context  上下文
+     * @param key_page 页面的key
+     * @param bundle   参数
+     */
+    public static void startActivity(Context context, String key_page, Bundle bundle) {
+        Class clazz = actMap.get(key_page);
+        if (clazz != null) {
+            Intent starter = new Intent(context, clazz);
+            if (bundle != null) {
+                starter.putExtras(bundle);
+            }
+            context.startActivity(starter);
+        }
     }
 
 }

@@ -41,6 +41,10 @@ public class MainActivity extends BaseActivity implements MainContract.MainContr
         adapter.setTabLayout(tabLayout);
     }
 
+    public void toFindPage(View v){
+        mainPresenter.toFindPage();
+    }
+
     @Override
     protected void bindEvent() {
 

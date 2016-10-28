@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
 import com.jam.mymvpdemo.presenter.BasePresenter;
+import com.jam.mymvpdemo.util.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -156,5 +157,13 @@ public abstract class BaseActivity extends FragmentActivity {
      */
     public void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 跳转界面
+     * @param keyFindPage 界面的key
+     */
+    public void toPage(String keyFindPage){
+        ActivityUtils.startActivity(this, keyFindPage);
     }
 }

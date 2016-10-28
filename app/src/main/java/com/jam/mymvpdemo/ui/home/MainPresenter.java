@@ -1,6 +1,7 @@
 package com.jam.mymvpdemo.ui.home;
 
 import com.jam.mymvpdemo.data.MainRepository;
+import com.jam.mymvpdemo.interfaces.PageNames;
 import com.jam.mymvpdemo.presenter.AsbPresenter;
 import com.jam.mymvpdemo.util.schedulers.BaseSchedulerProvider;
 
@@ -43,5 +44,10 @@ public class MainPresenter extends AsbPresenter implements MainContract.MainCont
                         mainView.showSuccess(s);
                     }
                 }));
+    }
+
+    @Override
+    public void toFindPage() {
+        mainView.toPage(PageNames.KEY_FIND_PAGE);
     }
 }

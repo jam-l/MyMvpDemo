@@ -15,5 +15,7 @@ public interface MainContract {
 
     interface MainContractPresenter extends BasePresenter {
         void getInfo();
+        // 跳转到发现界面
+        void toFindPage();
     }
 }

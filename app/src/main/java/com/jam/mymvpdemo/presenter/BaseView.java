@@ -7,4 +7,6 @@ package com.jam.mymvpdemo.presenter;
 public interface BaseView<T> {
     void setPresenter(T presenter);
     void showToast(String msg);
+    // 跳转页面
+    void toPage(String keyFindPage);
 }
