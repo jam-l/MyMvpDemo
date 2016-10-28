@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ToolBar">
+        <attr name="center_text" format="reference|string"/>
+        <attr name="back_image_visibility" format="boolean"/>
+    </declare-styleable>
+</resources>
