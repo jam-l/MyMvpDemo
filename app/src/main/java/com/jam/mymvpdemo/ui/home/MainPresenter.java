@@ -5,8 +5,6 @@ import com.jam.mymvpdemo.presenter.AsbPresenter;
 import com.jam.mymvpdemo.util.schedulers.BaseSchedulerProvider;
 
 import rx.Observer;
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
 
 public class MainPresenter extends AsbPresenter implements MainContract.MainContractPresenter {
     private final MainRepository                instance;
