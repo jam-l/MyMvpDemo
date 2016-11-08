@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.jam.mymvpdemo.presenter.BasePresenter;
+import com.jam.mymvpdemo.util.ActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -166,5 +167,13 @@ public abstract class BaseFragment extends Fragment {
      */
     public void showToast(String msg) {
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 跳转界面
+     * @param keyFindPage 界面的key
+     */
+    public void toPage(String keyFindPage){
+        ActivityUtils.startActivity(getActivity(), keyFindPage);
     }
 }
